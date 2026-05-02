@@ -1,6 +1,8 @@
 import tkinter
 from tkinter import ttk, messagebox
 import auth
+import shipments
+import inventory
 
 ##login window
 def login():
@@ -34,9 +36,7 @@ def login():
     # login button
     tkinter.Button(login_window, text="Login", command=login_authorize).grid(row=4, column=1, pady=3)
 
-    # main loop
     login_window.mainloop()
-
 
 
 ##main window
@@ -48,6 +48,10 @@ def main():
     #notebook for tabs
     notebook = ttk.Notebook(main_window)
     notebook.pack(fill="both", expand=True, pady=4)
+
+    # Day‑3: load ONLY shipments + inventory
+    shipments.shipment_tab(notebook)
+    inventory.inventory_tab(notebook)
 
     main_window.mainloop()
 
